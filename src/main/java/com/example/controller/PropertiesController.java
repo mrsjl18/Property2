@@ -1,43 +1,44 @@
 package com.example.controller;
 
 import com.example.entities.Seller;
+import com.example.repo.PropertiesRepo;
 import com.example.repo.SellerRepo;
+import com.example.service.PropertiesService;
 import com.example.service.SellerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
-
+import java.util.Properties;
 
 @RestController
-@RequestMapping("/sellers")
-public class SellerController {
+@RequestMapping("/properties")
+public class PropertiesController {
 
     @Autowired
-    SellerRepo sRepo;
+    PropertiesRepo pRepo;
 
     @Autowired
-    SellerService sService;
+    PropertiesService pService;
 
     @GetMapping("/read")
-    public List<Seller> read() {
-        return sService.getAll();
+    public List<Properties> read() {
+        return pService.getAll();
     }
 
     @GetMapping("/readOne/{id}")
-    public Seller readOne(@PathVariable Long id ) {
-        return sService.getSeller(id);
+    public Properties readOne(@PathVariable Long id ) {
+        return pService.getProperty(id);
     }
 
     @PostMapping("/add")
-    public Seller add(@RequestBody Seller newSeller){
-        return sService.createSeller(newSeller);
+    public Properties add(@RequestBody Properties newProperties){
+        return pService.createProperty(newProperties);
     }
 
     @DeleteMapping("/delete/{id}")
     public void delete(@PathVariable Long id ) {
-        sService.deleteSeller(id);
+        pService.deleteProperty(id);
     }
 
     /*@PutMapping("/update/{id}")
