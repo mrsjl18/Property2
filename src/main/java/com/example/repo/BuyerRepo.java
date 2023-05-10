@@ -1,14 +1,12 @@
 package com.example.repo;
 
-import com.example.entities.Properties;
+import com.example.entities.Buyer;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-
-
 @Repository
-public interface PropertiesRepo extends CrudRepository <Properties, Long> {
-    List<Properties> findAll();
+public interface BuyerRepo extends CrudRepository <Buyer, Long> {
+    List<Buyer> findAll();
 }

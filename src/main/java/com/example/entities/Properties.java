@@ -14,6 +14,10 @@ public class Properties {
 
     @ManyToOne
     private Seller seller;
+
+    @ManyToOne
+    private Buyer buyer;
+
     public Properties() {
     }
 

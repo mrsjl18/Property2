@@ -1,15 +1,13 @@
 package com.example.controller;
 
-import com.example.entities.Seller;
+
+import com.example.entities.Properties;
 import com.example.repo.PropertiesRepo;
-import com.example.repo.SellerRepo;
 import com.example.service.PropertiesService;
-import com.example.service.SellerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Properties;
 
 @RestController
 @RequestMapping("/properties")
