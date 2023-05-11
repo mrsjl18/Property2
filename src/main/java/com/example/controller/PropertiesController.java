@@ -39,9 +39,9 @@ public class PropertiesController {
         pService.deleteProperty(id);
     }
 
-    /*@PutMapping("/update/{id}")
-    public void update(@RequestBody Seller newSeller, @PathVariable Long id) {
-        sService.updateSeller(id);
-    }*/
+    @PutMapping("/update/{id}")
+    public void update(@RequestBody Properties newProperty, @PathVariable Long id) {
+        pService.updateProperty(newProperty, id);
+    }
 
 }

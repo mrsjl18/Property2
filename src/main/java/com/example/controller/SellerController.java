@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 
 @RestController
@@ -40,9 +39,9 @@ public class SellerController {
         sService.deleteSeller(id);
     }
 
-    /*@PutMapping("/update/{id}")
+    @PutMapping("/update/{id}")
     public void update(@RequestBody Seller newSeller, @PathVariable Long id) {
-        sService.updateSeller(id);
-    }*/
+        sService.updateSeller(newSeller, id);
+    }
 
 }

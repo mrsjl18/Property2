@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -43,11 +44,12 @@ public class PropertiesService {
 
     }
 
-    /*public Seller updateSeller (Long id) {
-        Optional<Seller> seller = sRepo.findById(id);
-        seller.get().setFirstName(newSeller.getFirstName());
-        seller.get().setLastName(newSeller.getLastName());
-        sRepo.save(seller.get());
-    }*/
-
+    public Properties updateProperty(Properties newProperty, Long id) {
+        Optional<Properties> properties = pRepo.findById(id);
+        properties.get().setAddress(newProperty.getAddress());
+        properties.get().setPostcode(newProperty.getPostcode());
+        properties.get().setPrice(newProperty.getPrice());
+        properties.get().setStatus(newProperty.getStatus());
+        return this.pRepo.save(properties.get());
+    }
 }

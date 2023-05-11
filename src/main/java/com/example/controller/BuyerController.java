@@ -1,7 +1,6 @@
 package com.example.controller;
 
 import com.example.entities.Buyer;
-import com.example.entities.Seller;
 import com.example.repo.BuyerRepo;
 import com.example.service.BuyerService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -44,11 +44,11 @@ public class SellerService {
 
     }
 
-    /*public Seller updateSeller (Long id) {
+    public Seller updateSeller(Seller newSeller, Long id) {
         Optional<Seller> seller = sRepo.findById(id);
         seller.get().setFirstName(newSeller.getFirstName());
         seller.get().setLastName(newSeller.getLastName());
-        sRepo.save(seller.get());
-    }*/
+        return this.sRepo.save(seller.get());
+    }
 
 }
