@@ -50,6 +50,11 @@ public class PropertiesService {
         properties.get().setPostcode(newProperty.getPostcode());
         properties.get().setPrice(newProperty.getPrice());
         properties.get().setStatus(newProperty.getStatus());
+        properties.get().setBedrooms(newProperty.getBedrooms());
+        properties.get().setBathrooms(newProperty.getBathrooms());
+        properties.get().setGarden(newProperty.getGarden());
+        properties.get().setType(newProperty.getType());
+
         return this.pRepo.save(properties.get());
     }
 }

@@ -9,6 +9,10 @@ public class Properties {
     private Long id;
     private String address;
     private String postcode;
+    private String type;
+    private Integer bedrooms;
+    private Integer bathrooms;
+    private Integer garden;
     private Double price;
     private String status;
 
@@ -21,10 +25,15 @@ public class Properties {
     public Properties() {
     }
 
-    public Properties(Long id, String address, String postcode, Double price, String status) {
+    public Properties(Long id, String address, String postcode, String type,
+                      Integer bedrooms, Integer bathrooms, Integer garden, Double price, String status) {
         this.id = id;
         this.address = address;
         this.postcode = postcode;
+        this.type = type;
+        this.bedrooms = bedrooms;
+        this.bathrooms = bathrooms;
+        this.garden = garden;
         this.price = price;
         this.status = status;
     }
@@ -69,12 +78,48 @@ public class Properties {
         this.status = status;
     }
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public Integer getBedrooms() {
+        return bedrooms;
+    }
+
+    public void setBedrooms(Integer bedrooms) {
+        this.bedrooms = bedrooms;
+    }
+
+    public Integer getBathrooms() {
+        return bathrooms;
+    }
+
+    public void setBathrooms(Integer bathrooms) {
+        this.bathrooms = bathrooms;
+    }
+
+    public Integer getGarden() {
+        return garden;
+    }
+
+    public void setGarden(Integer garden) {
+        this.garden = garden;
+    }
+
     @Override
     public String toString() {
         return "Properties{" +
                 "id=" + id +
                 ", address='" + address + '\'' +
                 ", postcode='" + postcode + '\'' +
+                ", type='" + type + '\'' +
+                ", bedrooms=" + bedrooms +
+                ", bathrooms=" + bathrooms +
+                ", garden=" + garden +
                 ", price=" + price +
                 ", status='" + status + '\'' +
                 '}';
