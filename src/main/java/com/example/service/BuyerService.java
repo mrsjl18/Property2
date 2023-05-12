@@ -48,6 +48,9 @@ public class BuyerService {
         Optional<Buyer> buyer = bRepo.findById(id);
         buyer.get().setFirstName(newBuyer.getFirstName());
         buyer.get().setLastName(newBuyer.getLastName());
+        buyer.get().setPhone(newBuyer.getPhone());
+        buyer.get().setAddress(newBuyer.getAddress());
+        buyer.get().setPostcode(newBuyer.getPostcode());
         buyer.get().setBudget(newBuyer.getBudget());
         return this.bRepo.save(buyer.get());
     }

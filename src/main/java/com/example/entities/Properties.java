@@ -25,8 +25,8 @@ public class Properties {
     public Properties() {
     }
 
-    public Properties(Long id, String address, String postcode, String type,
-                      Integer bedrooms, Integer bathrooms, Integer garden, Double price, String status) {
+    public Properties(Long id, String address, String postcode, String type, Integer bedrooms,
+                      Integer bathrooms, Integer garden, Double price, String status, Seller seller) {
         this.id = id;
         this.address = address;
         this.postcode = postcode;
@@ -36,6 +36,7 @@ public class Properties {
         this.garden = garden;
         this.price = price;
         this.status = status;
+        this.seller = seller;
     }
 
     public Long getId() {
@@ -110,6 +111,14 @@ public class Properties {
         this.garden = garden;
     }
 
+    public Seller getSeller() {
+        return seller;
+    }
+
+    public void setSeller(Seller seller) {
+        this.seller = seller;
+    }
+
     @Override
     public String toString() {
         return "Properties{" +
@@ -122,6 +131,7 @@ public class Properties {
                 ", garden=" + garden +
                 ", price=" + price +
                 ", status='" + status + '\'' +
+                ", seller=" + seller +
                 '}';
     }
 }

@@ -48,6 +48,9 @@ public class SellerService {
         Optional<Seller> seller = sRepo.findById(id);
         seller.get().setFirstName(newSeller.getFirstName());
         seller.get().setLastName(newSeller.getLastName());
+        seller.get().setPhone(newSeller.getPhone());
+        seller.get().setAddress(newSeller.getAddress());
+        seller.get().setPostcode(newSeller.getPostcode());
         return this.sRepo.save(seller.get());
     }
 

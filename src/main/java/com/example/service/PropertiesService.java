@@ -1,7 +1,10 @@
 package com.example.service;
 
 import com.example.entities.Properties;
+import com.example.entities.Seller;
+import com.example.repo.BuyerRepo;
 import com.example.repo.PropertiesRepo;
+import com.example.repo.SellerRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,10 +16,18 @@ import java.util.Optional;
 public class PropertiesService {
     @Autowired
     private PropertiesRepo pRepo;
+    @Autowired
+    private BuyerRepo bRepo;
+    @Autowired
+    private SellerRepo sRepo;
 
-    public PropertiesService(PropertiesRepo pRepo){
+    public PropertiesService(PropertiesRepo pRepo,
+                             BuyerRepo bRepo, SellerRepo sRepo) {
         this.pRepo = pRepo;
+        this.bRepo = bRepo;
+        this.sRepo = sRepo;
     }
+
     public PropertiesService(){
 
     }
@@ -33,9 +44,12 @@ public class PropertiesService {
 
 
     public Properties createProperty (Properties properties){
+        Optional<Seller> seller = this.sRepo.findById(properties.getSeller().getId());
+        properties.setSeller(seller.get());
         return this.pRepo.save(properties);
 
     }
+
 
     public Properties deleteProperty (Long id){
         Properties removed = this.getProperty(id);
@@ -54,6 +68,8 @@ public class PropertiesService {
         properties.get().setBathrooms(newProperty.getBathrooms());
         properties.get().setGarden(newProperty.getGarden());
         properties.get().setType(newProperty.getType());
+        properties.get().setSeller(newProperty.getSeller());
+
 
         return this.pRepo.save(properties.get());
     }

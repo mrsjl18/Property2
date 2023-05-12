@@ -13,6 +13,9 @@ public class Buyer {
     private Long id;
     private String firstName;
     private String lastName;
+    private String phone;
+    private String address;
+    private String postcode;
     private Double budget;
 
     @OneToMany(mappedBy = "buyer", fetch = FetchType.EAGER)
@@ -22,10 +25,14 @@ public class Buyer {
     public Buyer() {
     }
 
-    public Buyer(Long id, String firstName, String lastName, Double budget) {
+    public Buyer(Long id, String firstName, String lastName,
+                 String phone, String address, String postcode, Double budget) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.phone = phone;
+        this.address = address;
+        this.postcode = postcode;
         this.budget = budget;
     }
 
@@ -61,12 +68,39 @@ public class Buyer {
         this.budget = budget;
     }
 
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getPostcode() {
+        return postcode;
+    }
+
+    public void setPostcode(String postcode) {
+        this.postcode = postcode;
+    }
+
     @Override
     public String toString() {
         return "Buyer{" +
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
+                ", phone='" + phone + '\'' +
+                ", address='" + address + '\'' +
+                ", postcode='" + postcode + '\'' +
                 ", budget=" + budget +
                 '}';
     }

@@ -14,6 +14,9 @@ public class Seller {
     private Long id;
     private String firstName;
     private String lastName;
+    private String phone;
+    private String address;
+    private String postcode;
 
     @OneToMany(mappedBy = "seller", fetch = FetchType.EAGER)
     @JsonIgnore
@@ -22,11 +25,14 @@ public class Seller {
     public Seller() {
     }
 
-    public Seller(Long id, String firstName, String lastName) {
+    public Seller(Long id, String firstName, String lastName,
+                  String phone, String address, String postcode) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
-
+        this.phone = phone;
+        this.address = address;
+        this.postcode = postcode;
     }
 
     public Long getId() {
@@ -53,6 +59,29 @@ public class Seller {
         this.lastName = lastName;
     }
 
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getPostcode() {
+        return postcode;
+    }
+
+    public void setPostcode(String postcode) {
+        this.postcode = postcode;
+    }
 
     @Override
     public String toString() {
@@ -60,6 +89,9 @@ public class Seller {
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
+                ", phone='" + phone + '\'' +
+                ", address='" + address + '\'' +
+                ", postcode='" + postcode + '\'' +
                 '}';
     }
 }
