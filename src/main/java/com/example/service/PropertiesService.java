@@ -5,6 +5,7 @@ import com.example.entities.Seller;
 import com.example.repo.BuyerRepo;
 import com.example.repo.PropertiesRepo;
 import com.example.repo.SellerRepo;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,8 +39,9 @@ public class PropertiesService {
 
 
     public Properties getProperty(Long id) {
-        return this.pRepo.findById(id).get();
-
+        Optional<Properties> propertyOpt = this.pRepo.findById(id);
+        if (propertyOpt.isPresent()) return propertyOpt.get();
+        throw new EntityNotFoundException("Property with ID" + id + " not found in database.");
     }
 
 
@@ -59,18 +61,25 @@ public class PropertiesService {
     }
 
     public Properties updateProperty(Properties newProperty, Long id) {
-        Optional<Properties> properties = pRepo.findById(id);
-        properties.get().setAddress(newProperty.getAddress());
-        properties.get().setPostcode(newProperty.getPostcode());
-        properties.get().setPrice(newProperty.getPrice());
-        properties.get().setStatus(newProperty.getStatus());
-        properties.get().setBedrooms(newProperty.getBedrooms());
-        properties.get().setBathrooms(newProperty.getBathrooms());
-        properties.get().setGarden(newProperty.getGarden());
-        properties.get().setType(newProperty.getType());
-        properties.get().setSeller(newProperty.getSeller());
+//        Optional<Properties> properties = pRepo.findById(id);
+        Properties property = this.getProperty(id);
+        property.setAddress(newProperty.getAddress());
+        property.setPostcode(newProperty.getPostcode());
+        property.setPrice(newProperty.getPrice());
+        property.setStatus(newProperty.getStatus());
+        property.setBedrooms(newProperty.getBedrooms());
+        property.setBathrooms(newProperty.getBathrooms());
+        property.setGarden(newProperty.getGarden());
+        property.setType(newProperty.getType());
+        property.setSeller(newProperty.getSeller());
 
 
-        return this.pRepo.save(properties.get());
+        return this.pRepo.save(property);
     }
+
+    public Properties updatePartialProperty (Properties newUpdatedProperty, Long id) {
+       Properties toUpdate = this.getProperty(id);
+       toUpdate.setStatus(newUpdatedProperty.getStatus());
+       return this.pRepo.save(toUpdate);
+   }
 }

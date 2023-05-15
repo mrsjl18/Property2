@@ -5,13 +5,13 @@ import jakarta.persistence.*;
 
 import java.util.List;
 
-
+@Table (name = "seller")
 @Entity
 public class Seller {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    private Long id;
+    private Long seller_id;
     private String firstName;
     private String lastName;
     private String phone;
@@ -27,7 +27,7 @@ public class Seller {
 
     public Seller(Long id, String firstName, String lastName,
                   String phone, String address, String postcode) {
-        this.id = id;
+        this.seller_id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.phone = phone;
@@ -36,11 +36,11 @@ public class Seller {
     }
 
     public Long getId() {
-        return id;
+        return seller_id;
     }
 
     public void setId(Long id) {
-        this.id = id;
+        this.seller_id = id;
     }
 
     public String getFirstName() {
@@ -86,7 +86,7 @@ public class Seller {
     @Override
     public String toString() {
         return "Seller{" +
-                "id=" + id +
+                "id=" + seller_id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", phone='" + phone + '\'' +

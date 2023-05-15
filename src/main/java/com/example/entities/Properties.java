@@ -2,11 +2,12 @@ package com.example.entities;
 
 import jakarta.persistence.*;
 
+@Table (name = "properties")
 @Entity
 public class Properties {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer property_id;
     private String address;
     private String postcode;
     private String type;
@@ -16,6 +17,7 @@ public class Properties {
     private Double price;
     private String status;
 
+    @JoinColumn (name = "seller_id_fk")
     @ManyToOne
     private Seller seller;
 
@@ -25,9 +27,9 @@ public class Properties {
     public Properties() {
     }
 
-    public Properties(Long id, String address, String postcode, String type, Integer bedrooms,
+    public Properties(Integer id, String address, String postcode, String type, Integer bedrooms,
                       Integer bathrooms, Integer garden, Double price, String status, Seller seller) {
-        this.id = id;
+//        this.properties_id = id;
         this.address = address;
         this.postcode = postcode;
         this.type = type;
@@ -39,12 +41,21 @@ public class Properties {
         this.seller = seller;
     }
 
-    public Long getId() {
-        return id;
+//    public Integer getId() {
+//        return properties_id;
+//    }
+//
+//    public void setId(Integer id) {
+//        this.properties_id = id;
+//    }
+
+
+    public Integer getProperty_id() {
+        return property_id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setProperty_id(Integer property_id) {
+        this.property_id = property_id;
     }
 
     public String getAddress() {
@@ -122,7 +133,7 @@ public class Properties {
     @Override
     public String toString() {
         return "Properties{" +
-                "id=" + id +
+//                "id=" + properties_id +
                 ", address='" + address + '\'' +
                 ", postcode='" + postcode + '\'' +
                 ", type='" + type + '\'' +
