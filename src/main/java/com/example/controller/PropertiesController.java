@@ -29,26 +29,30 @@ public class PropertiesController {
 
     @GetMapping("/read")
     public ResponseEntity<List<Properties>> read() {
+
         return new ResponseEntity<>(pService.getAll(), HttpStatus.OK);
     }
 
     @GetMapping("/readOne/{id}")
-    public Properties readOne(@PathVariable Long id ) {
-        return pService.getProperty(id);
+    public ResponseEntity<Properties> readOne(@PathVariable("id") Long id ) {
+
+        return new ResponseEntity<>(pService.getProperty(id), HttpStatus.OK);
     }
 
     @PostMapping("/add")
     public ResponseEntity<Properties> add(@RequestBody Properties newProperties){
+
         return new ResponseEntity<>(pService.createProperty(newProperties), HttpStatus.CREATED);
     }
 
     @DeleteMapping("/delete/{id}")
-    public void delete(@PathVariable Long id ) {
-        pService.deleteProperty(id);
+    public ResponseEntity<Properties> delete(@PathVariable("id") Long id ) {
+
+        return new ResponseEntity<>(pService.deleteProperty(id), HttpStatus.OK);
     }
 
     @PutMapping("/update/{id}")
-    public void update(@RequestBody Properties newProperty, @PathVariable Long id) {
+    public void update(@RequestBody Properties newProperty, @PathVariable("id") Long id) {
         pService.updateProperty(newProperty, id);
     }
 
